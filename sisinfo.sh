@@ -2,12 +2,12 @@
 ################################################################################
 #------------------------------------------------------------------------------#
 #                                                                              #
-#  Nome do script: sisinfo.sh-Lista algumas informações importantes do Sistema #
+#  Nome do script:sisinfo.sh - Lista algumas informações importantes do Sistema#
 #  Autor: Igor Portella Pereira Lopes                                          #
 #  E-mai: igorlllopesport@gmail.com                                            #
 #  Data:09/08/2018                                                             #
 #  ----------------------------------------------------------------------------#
-#  Esse programa busca por meio de autenticação exibir informações importantes
+#  Esse programa busca por meio de autenticação exibir informações importantes #
 #  do sistema utilizado.                                                       #
 #                                                                              #
 #------------------------------------------------------------------------------#
