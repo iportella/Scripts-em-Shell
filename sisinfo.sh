@@ -2,7 +2,7 @@
 ################################################################################
 #------------------------------------------------------------------------------#
 #                                                                              #
-#  Nome do script:sisinfo.sh - Lista algumas informações importantes do Sistema#
+#  Nome do script: sisinfo.sh                                                  #
 #  Autor: Igor Portella Pereira Lopes                                          #
 #  E-mai: igorlllopesport@gmail.com                                            #
 #  Data:09/08/2018                                                             #
@@ -13,12 +13,13 @@
 #------------------------------------------------------------------------------#
 ################################################################################
 
-echo "Solicitando autorização para colher e exibir informações sobre o sistema (S/N)?"
+echo "Solicitando autorização para colher e exibir informações sobre o sistema (s/n)?"
 read autoriza
-test  "$autoriza" = "N" && exit
+test  "$autoriza" != "s" && exit
 echo "########## Diretorio atual: ##########"
 pwd
 echo
+sleep 2
 echo "########## Arquivos/Pastas no diretorio atual:  ##########"
 ls
 echo
@@ -26,17 +27,19 @@ sleep 2
 echo "########## Data e hora atual:  ##########"
 date
 echo
+sleep 2
 echo " ########## Informações de rede: ##########"
 ifconfig
 echo
-sleep 2
+sleep 3
 echo " ########## Uso de espaço do disco: ##########"
 df -ah
 echo
-sleep 2
+sleep 3
 echo " ########## Memoria utilizada/livre:  ##########"
 free -m
 echo
+sleep 2
 echo " ########## Usuários logados no sistema:  ##########"
 w
 echo
@@ -48,9 +51,9 @@ sleep 2
 echo " ########## Processos em execução no momento:  ##########"
 pstree
 echo
-sleep 2
+sleep 4
 echo " ########## Espaço do sistema:  ##########"
 df -h
 echo
-sleep 2
+sleep 3
 echo " ########## Fim do Programa: ######### "
