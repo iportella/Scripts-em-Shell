@@ -120,6 +120,30 @@ get_ports_info() {
     fi
 }
 
+get_replication_info() {
+    echo "[10] Coletando informacoes de replicacao LDAP:"
+    if [ "$ldap_type" == "OUD" ]; then
+        if command -v dsreplication &>/dev/null; then
+            echo "[10.1] Status de replicacao OUD:"
+            dsreplication status --hostname localhost --port 4444 --adminUID admin --adminPassword password --trustAll || echo "[!] Falha ao coletar status de replicacao via dsreplication"
+        else
+            echo "[!] dsreplication nao encontrado no PATH para OUD."
+        fi
+    elif [ "$ldap_type" == "ODSEE" ]; then
+        if [ -n "$dsconf_path" ]; then
+            echo "[10.1] Acordos de replicacao ODSEE:"
+            "$dsconf_path" list-repl-agmts || echo "[!] Falha ao listar acordos de replicacao via dsconf"
+            echo "[10.2] Informacoes gerais de replicacao ODSEE:"
+            "$dsconf_path" info || echo "[!] Falha ao coletar informacoes via dsconf info"
+        else
+            echo "[!] Caminho do dsconf nao identificado para coleta de replicacao."
+        fi
+    else
+        echo "[!] LDAP nao identificado, nao foi possivel coletar informacoes de replicacao."
+    fi
+}
+
+
 print_header
 get_os_info
 get_disk_info
@@ -127,4 +151,5 @@ get_ldap_info
 get_instance_info
 get_fqdn_info
 get_ports_info
+get_replication_info
 print_footer
